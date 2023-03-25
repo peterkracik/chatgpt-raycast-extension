@@ -1,9 +1,9 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "chatgtp-4-query",
-  "title": "ChatGTP-4 Query",
-  "description": "",
-  "icon": "command-icon.png",
+  "name": "chatgtp-query",
+  "title": "ChatGTP Query",
+  "description": "Simple extension to query ChatGPT",
+  "icon": "extension_icon.png",
   "author": "peterkracik",
   "owner": "pk-dev",
   "categories": [
@@ -13,14 +13,23 @@
   "commands": [
     {
       "name": "index",
-      "title": "chatgpt",
-      "description": "Template for showing typeahead search with network results.",
-      "mode": "view"
+      "title": "ChatGPT query",
+      "description": "ChatGPT Query",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "query",
+          "type": "text",
+          "placeholder": "Ask me anything",
+          "required": true
+        }
+      ]
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.48.9",
-    "@raycast/utils": "^1.4.8"
+    "@raycast/utils": "^1.4.8",
+    "openai": "^3.2.1"
   },
   "devDependencies": {
     "@raycast/eslint-config": "1.0.5",
@@ -36,5 +45,52 @@
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
     "publish": "ray publish"
-  }
+  },
+  "preferences": [
+    {
+      "name": "openai_api_key",
+      "title": "OpenAI API Key",
+      "description": "OpenAI API Key",
+      "type": "password",
+      "required": true
+    },
+    {
+      "name": "openai_model",
+      "title": "OpenAI Model",
+      "description": "OpenAI Model",
+      "type": "dropdown",
+      "required": true,
+      "data": [
+        {
+          "value": "text-davinci-003",
+          "title": "text-davinci-003"
+        },
+        {
+          "value": "text-davinci-002",
+          "title": "text-davinci-002"
+        },
+        {
+          "value": "code-davinci-002",
+          "title": "code-davinci-002"
+        }
+      ],
+      "default": "text-davinci-003"
+    },
+    {
+      "name": "openai_max_tokens",
+      "title": "OpenAI Max Tokens",
+      "description": "OpenAI Max Tokens",
+      "type": "textfield",
+      "required": true,
+      "default": "100"
+    },
+    {
+      "name": "openai_temperature",
+      "title": "OpenAI Temperature",
+      "description": "OpenAI Temperature",
+      "type": "textfield",
+      "required": true,
+      "default": "0.9"
+    }
+  ]
 }
