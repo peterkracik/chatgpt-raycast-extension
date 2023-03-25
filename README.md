@@ -1,1 +1,1 @@
-# ChatGTP-4 Query
+# ChatGTP Query
